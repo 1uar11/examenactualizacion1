@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
+import { ExampleService } from '../services/example.service';
 
 @Component({
   selector: 'app-tab2',
@@ -6,7 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
+  usario:any;
 
-  constructor() {}
+  constructor(private exampleService:ExampleService) {}
+
+  ngOnInit(){
+    this.exampleService.$getObejectSource.subscribe(data => {
+    console.log(data) 
+    this.usario = data;})
+  }
 
 }
